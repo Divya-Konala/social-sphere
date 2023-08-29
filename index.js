@@ -8,6 +8,7 @@ const MongoDBStore = require("connect-mongodb-session")(session);
 //file-imports
 const userRouter = require("./Routes/users");
 const authRouter = require("./Routes/auth");
+const postsRouter = require("./Routes/posts");
 const isAuth = require("./Middleware/Auth");
 
 const app = express();
@@ -32,6 +33,7 @@ app.use(
 //routes
 app.use("/api/users", isAuth, userRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/posts",isAuth,postsRouter);
 //initializations
 const PORT = process.env.PORT || 8000;
 
